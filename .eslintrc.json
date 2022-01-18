@@ -6,6 +6,7 @@
   "extends": [
     "airbnb-base",
     "plugin:@typescript-eslint/recommended",
+    "prettier",
     "plugin:prettier/recommended"
   ],
   "parser": "@typescript-eslint/parser",
@@ -15,7 +16,8 @@
   },
   "plugins": [
     "@typescript-eslint",
-    "prettier"
+    "prettier",
+    "simple-import-sort"
   ],
   "rules": {
     "no-use-before-define": "off",
