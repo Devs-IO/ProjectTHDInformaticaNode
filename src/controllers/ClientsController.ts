@@ -11,6 +11,6 @@ export default class ClientsController {
 
     const clients = createClientsService.execute({ name, phone, email, cpf, city });
 
-    return response.status(201).json();
+    return response.status(201).json(clients);
   }
 }
