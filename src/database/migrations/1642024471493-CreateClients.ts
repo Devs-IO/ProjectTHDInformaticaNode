@@ -21,16 +21,19 @@ export default class CreateClients1642024471493 implements MigrationInterface {
             name: 'phone',
             type: 'varchar',
             isNullable: false,
+            isUnique: true,
           },
           {
             name: 'email',
             type: 'varchar',
             isNullable: false,
+            isUnique: true,
           },
           {
             name: 'cpf',
             type: 'varchar',
             isNullable: false,
+            isUnique: true,
           },
           {
             name: 'city',
