@@ -11,11 +11,15 @@ interface request {
 
 class CreateClientsService {
 
-  public async execute(data: request): Promise<Client> {
+  public async execute(data: request): Promise<Client | undefined> {
 
     const clientsRepository = new ClientsRepository();
 
-    const client = clientsRepository.create(data);
+    let client = await clientsRepository.findByPEC(data.phone, data.email, data.cpf);
+
+    if (!client) {
+      client = await clientsRepository.create(data);
+    }
 
     return client;
   }

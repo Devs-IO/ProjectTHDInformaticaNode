@@ -9,7 +9,7 @@ export default class ClientsController {
 
     const createClientsService = new CreateClientsService();
 
-    const clients = createClientsService.execute({ name, phone, email, cpf, city });
+    const clients = await createClientsService.execute({ name, phone, email, cpf, city });
 
     return response.status(201).json(clients);
   }

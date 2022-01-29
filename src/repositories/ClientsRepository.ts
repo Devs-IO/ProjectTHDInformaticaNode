@@ -17,6 +17,19 @@ class ClientsRepository implements IClientsRepository {
     return client;
   }
 
+  async findByPEC(phoneData: string, emailData: string, cpfData: string): Promise<Client | undefined> {
+
+    const clients = await this.ormRepository.findOne({
+      where: [
+        { phone: phoneData },
+        { email: emailData },
+        { cpf: cpfData },
+      ],
+    });
+
+    return clients
+  }
+
 }
 
 export default ClientsRepository;
