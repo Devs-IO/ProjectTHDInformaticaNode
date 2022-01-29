@@ -1,8 +1,7 @@
 import express from "express";
-
 import routes from "./routes/routes"
-
 import "./database/index";
+
 
 const app = express();
 
