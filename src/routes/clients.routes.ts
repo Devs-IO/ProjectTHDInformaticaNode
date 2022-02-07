@@ -7,5 +7,6 @@ const clientsRouter = Router();
 const clientsController = new ClientsController();
 
 clientsRouter.post('/', checksClientValidate(requestSchema), clientsController.create);
+clientsRouter.get('/', clientsController.find);
 
 export default clientsRouter;
