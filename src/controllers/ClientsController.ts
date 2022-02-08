@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import FindClientsService from "services/FindClientsService";
+import FindClientsService from "../services/FindClientsService";
 import CreateClientsService from "../services/CreateClientsService";
 
 export default class ClientsController {
