@@ -10,6 +10,7 @@ export default class CreateClients1642024471493 implements MigrationInterface {
             name: 'id',
             type: 'uuid',
             generationStrategy: 'uuid',
+            isPrimary: true,
             default: 'uuid_generate_v4()',
           },
           {
