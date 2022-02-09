@@ -1,10 +1,8 @@
 module.exports = {
   type: 'postgres',
-  url:
-    process.env.DATABASE_URL ||
-    'postgres://postgres:postgres@localhost:5432/thdproject',
-  ssl: process.env.DATABASE_URL ? true : false,
-  //extra: { ssl: { rejectUnauthorized: false } },
+  url: process.env.DATABASE_URL,
+  ssl: true,
+  extra: { ssl: { rejectUnauthorized: false } },
   entities: ['dist/models/**/*.js'],
   migrations: ['dist/database/migrations/**/*.js'],
   cli: {
