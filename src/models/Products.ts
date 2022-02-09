@@ -1,4 +1,4 @@
-import { Column, Entity, CreateDateColumn, UpdateDateColumn, PrimaryGeneratedColumn, OneToMany, JoinColumn, OneToOne } from 'typeorm';
+import { Column, Entity, CreateDateColumn, UpdateDateColumn, PrimaryGeneratedColumn, OneToMany, JoinColumn } from 'typeorm';
 import Categories from './Categories';
 import Providers from './Providers';
 
@@ -10,14 +10,14 @@ export default class Products {
   @Column('uuid')
   provider_id: string;
 
-  @OneToOne(() => Providers )
+  @OneToMany(() => Providers, provider => provider.id )
   @JoinColumn({name: 'provider_id' })
   provider: Providers;
 
   @Column('uuid')
   category_id: string;
 
-  @OneToOne(() => Categories )
+  @OneToMany(() => Categories, categories => categories.id )
   @JoinColumn({name: 'category_id' })
   categories: Categories;
 
@@ -25,16 +25,16 @@ export default class Products {
   name: string;
 
   @Column()
-  sell_price: number;
+  sell_price: string;
 
   @Column()
-  buy_price: number;
+  buy_price: string;
 
   @Column()
   description: string;
 
   @Column()
-  quantity: number;
+  quantity: string;
 
   @Column()
   code: string
