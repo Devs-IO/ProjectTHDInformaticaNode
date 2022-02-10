@@ -1,5 +1,6 @@
 import { Router, Request, Response } from 'express';
 import clientsRouter from "./clients.routes";
+import productsRouter from './products.routes';
 
 const routes = Router();
 
@@ -11,5 +12,6 @@ routes.get('/', (request: Request, response: Response) => {
 });
 
 routes.use("/clients", clientsRouter);
+routes.use("/products", productsRouter);
 
 export default routes;
