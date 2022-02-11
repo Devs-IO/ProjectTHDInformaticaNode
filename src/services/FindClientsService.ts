@@ -1,9 +1,9 @@
-import Client from "../models/Client";
+import Clients from "../models/Clients";
 import ClientsRepository from "../repositories/ClientsRepository";
 
 class FindClientsService {
 
-  public async execute(): Promise<Client[]> {
+  public async execute(): Promise<Clients[]> {
 
     const clientsRepository = new ClientsRepository();
 

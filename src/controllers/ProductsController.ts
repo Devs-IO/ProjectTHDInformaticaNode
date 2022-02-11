@@ -1,36 +1,30 @@
 import { Request, Response } from "express";
-import CreateProductService from "../services/CreateProductService";
+import CreateProductsService from "../services/CreateProductsService";
 
-interface ProductData {
-  name:string,
-  sell_price:string,
-  buy_price:string,
-  description?:string,
-  quantity:string,
-  code?:string,
-};
-// \/ Usar id de categories e providers para criar products
-// interface Categories {
-//   category:[
-//     name:string
-//   ];
-// };
-// interface Providers {
-//   provider:[
-//     name: string,
-//     phone: string,
-//     email: string
-//   ];
-// };
+export default class ProductsController {
+  public async create(request: Request, response: Response) {
 
-export default class ProductsController{
-  public async create( request:Request, response:Response){
+    const { name,
+      category_id,
+      provider_id,
+      sell_price,
+      buy_price,
+      description,
+      quantity,
+      code } = request.body;
 
-    const { ProductData } = request.body;
+    const createProductsService = new CreateProductsService
 
-    const createProductService = new CreateProductService
-
-    const product = await createProductService.execute(ProductData);
+    const product = await createProductsService.execute({
+      name,
+      category_id,
+      provider_id,
+      sell_price,
+      buy_price,
+      description,
+      quantity,
+      code
+    });
 
     return response.status(201).json(product);
 

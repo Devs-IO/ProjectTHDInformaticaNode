@@ -3,22 +3,22 @@ import Categories from './Categories';
 import Providers from './Providers';
 
 @Entity('products')
-export default class Products {
+class Products {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
   @Column('uuid')
   provider_id: string;
 
-  @OneToMany(() => Providers, provider => provider.id )
-  @JoinColumn({name: 'provider_id' })
+  @OneToMany(() => Providers, provider => provider.id)
+  @JoinColumn({ name: 'provider_id' })
   provider: Providers;
 
   @Column('uuid')
   category_id: string;
 
-  @OneToMany(() => Categories, categories => categories.id )
-  @JoinColumn({name: 'category_id' })
+  @OneToMany(() => Categories, categories => categories.id)
+  @JoinColumn({ name: 'category_id' })
   categories: Categories;
 
   @Column()
@@ -45,3 +45,5 @@ export default class Products {
   @UpdateDateColumn()
   updated_at: Date;
 }
+
+export default Products;

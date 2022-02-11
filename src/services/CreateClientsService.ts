@@ -1,4 +1,4 @@
-import Client from "../models/Client";
+import Clients from "../models/Clients";
 import ClientsRepository from "../repositories/ClientsRepository";
 
 interface request {
@@ -11,7 +11,7 @@ interface request {
 
 class CreateClientsService {
 
-  public async execute(data: request): Promise<Client | undefined> {
+  public async execute(data: request): Promise<Clients | undefined> {
 
     const clientsRepository = new ClientsRepository();
 
