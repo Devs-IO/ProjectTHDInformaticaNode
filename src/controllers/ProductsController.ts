@@ -1,4 +1,5 @@
 import { Request, Response } from "express";
+import FindProductService from "../services/FindProductService";
 import CreateProductsService from "../services/CreateProductsService";
 
 export default class ProductsController {
@@ -29,4 +30,11 @@ export default class ProductsController {
     return response.status(201).json(product);
 
   };
+  public async find(request: Request, response: Response) {
+    const findProductService = new FindProductService
+
+    const product =  await findProductService.execute()
+
+    return response.status(201).json(product)
+  }
 };
