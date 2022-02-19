@@ -25,9 +25,11 @@ const checkProductValidate = (requestSchema: OptionalObjectSchema<ObjectShape>) 
           quantity,
           code
         });
+        console.log(description)
         return next();
       }
       catch (error) {
+        console.log()
         throw new Error("Erro na validação do produto")
       }
   }

@@ -8,5 +8,6 @@ const productsController = new ProductsController();
 
 productsRouter.post('/', checkProductValidate(requestSchema), productsController.create);
 productsRouter.get('/', productsController.find);
+productsRouter.delete('/:id', productsController.delete)
 
 export default productsRouter;
