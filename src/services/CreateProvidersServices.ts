@@ -1,5 +1,5 @@
 import Providers from "../models/Providers";
-import ProvidersRepository from "../repositories/ProviderRepository";
+import ProvidersRepository from "../repositories/ProvidersRepository";
 
 
 interface request {
