@@ -1,49 +1,44 @@
-import { Response, Request } from "express";
-
-import ProductsRepository from "../repositories/ProductsRepository";
 import CategoriesRepository from "../repositories/CategoriesRepository";
+import ProductsRepository from "../repositories/ProductsRepository";
 import ProvidersRepository from "../repositories/ProvidersRepository";
-
-interface categories {
-  id: string,
-  name: string
-}
 
 interface IproductsPage {
   name: string,
   categories_name: string,
-  providers_contact_name?: string,
+  providers_name: string,
   sell_price: string,
   buy_price: string,
-  description?: string,
+  description: string,
   quantity: string,
-  code?: string,
+  code: string,
 };
 
 class FindProductPageService {
   public async execute() {
 
-    const productsRepoditory = new ProductsRepository();
+    const productsRepository = new ProductsRepository();
     const categoriesRepository = new CategoriesRepository();
-    const providersRepository = new ProvidersRepository()
+    const providersRepository = new ProvidersRepository();
 
-    const products = await productsRepoditory.find()
-    // let provider = providersRepository.find();
+    const products = await productsRepository.find();
+    const productsPage: IproductsPage[] = [];
 
-    const productsPage:IproductsPage[] = []
+    for (const element of products) {
+      const category = await categoriesRepository.findById(element.category_id);
+      const provider = await providersRepository.findById(element.provider_id);
 
-    products.forEach((element:any) => {
-      const productCategory = categoriesRepository.findById(element.category_id)
-      const categoryName = productCategory.catch.name
       productsPage.push({
-          name: element.name,
-          categories_name: categoryName,
-          sell_price: element.sell_price,
-          buy_price: element.buy_price,
-          quantity: element.quantity,
+        name: element.name,
+        categories_name: category.name,
+        providers_name: provider.name,
+        sell_price: element.sell_price,
+        description: element.description,
+        buy_price: element.buy_price,
+        quantity: element.quantity,
+        code: element.code,
       })
-    });
-    console.log(productsPage)
+    };
+    return productsPage;
   };
 };
 

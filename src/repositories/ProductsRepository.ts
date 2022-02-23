@@ -24,17 +24,15 @@ class ProductsRepository implements IProductsRepository {
   }
 
   async findByName(nameData: string): Promise<Products | undefined> {
-
     const product = await this.ormRepository.findOne({
       where: [
         { name: nameData },
       ],
     });
-
     return product
   }
 
-  async deleteById(id:string):Promise<void> {
+  async deleteById(id: string): Promise<void> {
     await this.ormRepository.delete(id)
   };
 };

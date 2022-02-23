@@ -1,12 +1,12 @@
-import Providers from "../models/Providers";
-import { getRepository, Repository } from "typeorm";
-import IProvidersRepository from "./interface/IProvidersRepository";
 import ICreateProvidersDTO from "dtos/ICreateProvidersDTO";
+import { getRepository, Repository } from "typeorm";
+import Providers from "../models/Providers";
+import IProvidersRepository from "./interface/IProvidersRepository";
 
 class ProvidersRepository implements IProvidersRepository {
-  private ormRepository:Repository <Providers>;
+  private ormRepository: Repository<Providers>;
 
-  constructor () {
+  constructor() {
     this.ormRepository = getRepository(Providers)
   };
 
@@ -16,9 +16,18 @@ class ProvidersRepository implements IProvidersRepository {
     return providers;
   };
 
-  async find():Promise <Providers[]> {
+  async find(): Promise<Providers[]> {
     const provider = await this.ormRepository.find();
     return provider;
+  };
+
+  async findById(idData: string): Promise<Providers> {
+    const provider = await this.ormRepository.findOne({
+      where: [
+        { id: idData },
+      ],
+    });
+    return provider!;
   };
 };
 
