@@ -24,7 +24,7 @@ export default class ProvidersController {
     return response.status(201).json(providers);
   };
 
-  public async find(response: Response):Promise<Response | undefined> {
+  public async find(request: Request, response: Response):Promise<Response | undefined> {
     const findProvidersService = new FindProvidersService;
 
     const providers =  await findProvidersService.execute();

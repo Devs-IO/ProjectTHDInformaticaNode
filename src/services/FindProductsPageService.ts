@@ -10,7 +10,7 @@ interface IproductsPage {
   buy_price: string,
   description?: string,
   quantity: string,
-  code: string,
+  code?: string,
 };
 
 class FindProductPageService {
