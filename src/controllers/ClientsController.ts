@@ -13,14 +13,14 @@ export default class ClientsController {
     const clients = await createClientsService.execute({ name, phone, email, cpf, city });
 
     return response.status(201).json(clients);
-  }
+  };
 
-  public async find(request: Request, response: Response) {
+  public async find(response: Response):Promise<Response | undefined> {
 
     const findClientsService = new FindClientsService();
 
     const clients = await findClientsService.execute();
 
     return response.status(200).json(clients);
-  }
-}
+  };
+};

@@ -4,11 +4,11 @@ import ProvidersRepository from "../repositories/ProvidersRepository";
 
 interface IproductsPage {
   name: string,
-  categories_name: string,
-  providers_name: string,
+  categories_name?: string,
+  providers_name?: string,
   sell_price: string,
   buy_price: string,
-  description: string,
+  description?: string,
   quantity: string,
   code: string,
 };
@@ -30,7 +30,7 @@ class FindProductPageService {
       productsPage.push({
         name: element.name,
         categories_name: category.name,
-        providers_name: provider.name,
+        providers_name: provider.contact_name,
         sell_price: element.sell_price,
         description: element.description,
         buy_price: element.buy_price,

@@ -15,13 +15,11 @@ interface request {
 class CreateProductsService {
   public async execute(data: request): Promise<Products | undefined> {
     const productsRepository = new ProductsRepository();
-
     let product = await productsRepository.findByName(data.name);
-
     if (!product) {
-      product = await productsRepository.create(data)
-    }
-    return product
+      product = await productsRepository.create(data);
+    };
+    return product;
   };
 };
 

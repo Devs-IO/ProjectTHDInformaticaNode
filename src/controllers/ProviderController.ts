@@ -10,9 +10,9 @@ export default class ProvidersController {
       phone,
       email,
       contact_name
-    } = request.body
+    } = request.body;
 
-    const createProvidersService = new CreateProvidersService
+    const createProvidersService = new CreateProvidersService();
 
     const providers = await createProvidersService.execute({
       name,
@@ -24,11 +24,11 @@ export default class ProvidersController {
     return response.status(201).json(providers);
   };
 
-  public async find(request: Request, response: Response) {
+  public async find(response: Response):Promise<Response | undefined> {
     const findProvidersService = new FindProvidersService;
 
     const providers =  await findProvidersService.execute();
 
     return response.status(201).json(providers);
-  }
+  };
 };

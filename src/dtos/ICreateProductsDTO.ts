@@ -1,4 +1,4 @@
-export default interface ICreateProductDTO {
+export default interface ICreateProductsDTO {
   name: string,
   category_id: string,
   provider_id: string,

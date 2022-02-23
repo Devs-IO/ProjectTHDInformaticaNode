@@ -30,7 +30,7 @@ export default class ProductsController {
     return response.status(201).json(product);
   };
 
-  public async find(request: Request, response: Response) {
+  public async find(response: Response):Promise<Response | undefined> {
     const findProductService = new FindProductService();
     const product = await findProductService.execute();
     return response.status(200).json(product);
@@ -43,7 +43,7 @@ export default class ProductsController {
     return response.status(204).json({ message: "Deletado com sucesso" });
   };
 
-  public async findProductPage(request: Request, response: Response) {
+  public async findProductPage(response: Response):Promise<Response | undefined> {
     const findProductPageService = new FindProductPageService();
     const products = await findProductPageService.execute();
     return response.status(200).json(products);
