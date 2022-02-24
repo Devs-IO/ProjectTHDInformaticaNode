@@ -1,6 +1,6 @@
 import { Router } from "express";
 import ClientsController from "../controllers/ClientsController";
-import checksClientValidate from "../middlewares/checksClientValidate";
+import checksClientValidate from "../middlewares/checksClientsValidate";
 import requestSchema from "../middlewares/checksClientValidator";
 
 const clientsRouter = Router();

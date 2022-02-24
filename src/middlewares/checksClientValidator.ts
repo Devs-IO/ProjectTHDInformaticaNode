@@ -7,7 +7,6 @@ const requestSchema = Yup.object({
   email: Yup.string().max(100).email(),
   cpf: Yup.string().length(11),
   city: Yup.string().max(100),
-
 });
 
 export default requestSchema;
