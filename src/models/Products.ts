@@ -1,40 +1,40 @@
-import { Column, Entity, CreateDateColumn, UpdateDateColumn, PrimaryGeneratedColumn, OneToMany, JoinColumn, OneToOne } from 'typeorm';
+import { Column, Entity, CreateDateColumn, UpdateDateColumn, PrimaryGeneratedColumn, OneToMany, JoinColumn } from 'typeorm';
 import Categories from './Categories';
 import Providers from './Providers';
 
 @Entity('products')
-export default class Products {
+class Products {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
   @Column('uuid')
   provider_id: string;
 
-  @OneToOne(() => Providers )
-  @JoinColumn({name: 'provider_id' })
+  @OneToMany(() => Providers, provider => provider.id)
+  @JoinColumn({ name: 'provider_id' })
   provider: Providers;
 
   @Column('uuid')
   category_id: string;
 
-  @OneToOne(() => Categories )
-  @JoinColumn({name: 'category_id' })
+  @OneToMany(() => Categories, categories => categories.id)
+  @JoinColumn({ name: 'category_id' })
   categories: Categories;
 
   @Column()
   name: string;
 
   @Column()
-  sell_price: number;
+  sell_price: string;
 
   @Column()
-  buy_price: number;
+  buy_price: string;
 
   @Column()
   description: string;
 
   @Column()
-  quantity: number;
+  quantity: string;
 
   @Column()
   code: string
@@ -45,3 +45,5 @@ export default class Products {
   @UpdateDateColumn()
   updated_at: Date;
 }
+
+export default Products;

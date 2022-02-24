@@ -1,24 +1,23 @@
 import { getRepository, Repository } from "typeorm";
 import ICreateClientDTO from "../dtos/ICreateClientsDTO";
-import Client from "../models/Client";
+import Clients from "../models/Clients";
 import IClientsRepository from "./interface/IClientsRepository";
 
 class ClientsRepository implements IClientsRepository {
 
-  private ormRepository: Repository<Client>
+  private ormRepository: Repository<Clients>;
 
   constructor() {
-    this.ormRepository = getRepository(Client);
+    this.ormRepository = getRepository(Clients);
   }
 
-  async create(dataClients: ICreateClientDTO): Promise<Client> {
+  async create(dataClients: ICreateClientDTO): Promise<Clients> {
     const client = this.ormRepository.create(dataClients);
     await this.ormRepository.save(client);
     return client;
   }
 
-  async findByPEC(phoneData: string, emailData: string, cpfData: string): Promise<Client | undefined> {
-
+  async findByPEC(phoneData: string, emailData: string, cpfData: string): Promise<Clients | undefined> {
     const clients = await this.ormRepository.findOne({
       where: [
         { phone: phoneData },
@@ -26,15 +25,12 @@ class ClientsRepository implements IClientsRepository {
         { cpf: cpfData },
       ],
     });
-
-    return clients
+    return clients;
   }
 
-  async find(): Promise<Client[]> {
-
+  async find(): Promise<Clients[]> {
     const clients = await this.ormRepository.find();
-
-    return clients
+    return clients;
   }
 
 }

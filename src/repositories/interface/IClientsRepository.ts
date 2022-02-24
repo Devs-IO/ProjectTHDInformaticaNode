@@ -1,7 +1,7 @@
 import ICreateClientDTO from "../../dtos/ICreateClientsDTO";
-import Client from "../../models/Client";
+import Clients from "../../models/Clients";
 
 export default interface IClientsRepository {
-  create(dataClients: ICreateClientDTO): Promise<Client>;
-  find(): Promise<Client[]>;
+  create(dataClients: ICreateClientDTO): Promise<Clients>;
+  find(): Promise<Clients[]>;
 }
