@@ -1,4 +1,4 @@
-import { MigrationInterface, QueryRunner, Table, Timestamp } from 'typeorm';
+import { MigrationInterface, QueryRunner, Table } from 'typeorm';
 
 export default class CreateClients1642024471493 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
@@ -12,6 +12,7 @@ export default class CreateClients1642024471493 implements MigrationInterface {
             generationStrategy: 'uuid',
             isPrimary: true,
             default: 'uuid_generate_v4()',
+            isUnique: true,
           },
           {
             name: 'name',

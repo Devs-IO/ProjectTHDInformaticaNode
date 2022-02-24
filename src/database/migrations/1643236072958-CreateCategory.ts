@@ -13,6 +13,7 @@ export class CreateCategory1643236072958 implements MigrationInterface {
             generationStrategy: 'uuid',
             isPrimary: true,
             default: 'uuid_generate_v4()',
+            isUnique: true,
           },
           {
             name: 'name',

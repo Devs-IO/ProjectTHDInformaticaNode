@@ -13,6 +13,7 @@ export class CreateProviders1643236090121 implements MigrationInterface {
             isPrimary: true,
             generationStrategy: 'uuid',
             default: 'uuid_generate_v4()',
+            isUnique: true,
           },
           {
             name: 'name',
