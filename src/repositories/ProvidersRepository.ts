@@ -7,7 +7,7 @@ class ProvidersRepository implements IProvidersRepository {
   private ormRepository: Repository<Providers>;
 
   constructor() {
-    this.ormRepository = getRepository(Providers)
+    this.ormRepository = getRepository(Providers);
   };
 
   async create(dataProviders: ICreateProvidersDTO): Promise<Providers> {

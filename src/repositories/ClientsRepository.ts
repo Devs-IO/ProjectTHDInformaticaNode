@@ -5,7 +5,7 @@ import IClientsRepository from "./interface/IClientsRepository";
 
 class ClientsRepository implements IClientsRepository {
 
-  private ormRepository: Repository<Clients>
+  private ormRepository: Repository<Clients>;
 
   constructor() {
     this.ormRepository = getRepository(Clients);
@@ -18,7 +18,6 @@ class ClientsRepository implements IClientsRepository {
   }
 
   async findByPEC(phoneData: string, emailData: string, cpfData: string): Promise<Clients | undefined> {
-
     const clients = await this.ormRepository.findOne({
       where: [
         { phone: phoneData },
@@ -26,15 +25,12 @@ class ClientsRepository implements IClientsRepository {
         { cpf: cpfData },
       ],
     });
-
-    return clients
+    return clients;
   }
 
   async find(): Promise<Clients[]> {
-
     const clients = await this.ormRepository.find();
-
-    return clients
+    return clients;
   }
 
 }

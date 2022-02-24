@@ -1,4 +1,4 @@
-import { Router, Request, Response } from 'express';
+import { Request, Response, Router } from 'express';
 import categoriesRouter from './categories.routes';
 import clientsRouter from "./clients.routes";
 import productsRouter from './products.routes';

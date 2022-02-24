@@ -5,7 +5,7 @@ import FindProductPageService from "../services/FindProductsPageService";
 import FindProductService from "../services/FindProductsService";
 
 export default class ProductsController {
-  public async create(request: Request, response: Response) {
+  public async create(request: Request, response: Response): Promise<Response | void> {
     const { name,
       category_id,
       provider_id,
@@ -30,20 +30,20 @@ export default class ProductsController {
     return response.status(201).json(product);
   };
 
-  public async find(response: Response):Promise<Response | undefined> {
+  public async find(_: Request, response: Response): Promise<Response | void> {
     const findProductService = new FindProductService();
     const product = await findProductService.execute();
     return response.status(200).json(product);
   };
 
-  public async delete(request: Request, response: Response) {
+  public async delete(request: Request, response: Response): Promise<Response | void> {
     const { id } = request.params;
     const deleteProductService = new DeleteProductService();
     await deleteProductService.execute(id);
-    return response.status(204).json({ message: "Deletado com sucesso" });
+    return response.status(204).json({ message: "successfully deleted" });
   };
 
-  public async findProductPage(request: Request, response: Response):Promise<Response | undefined> {
+  public async findProductPage(_: Request, response: Response): Promise<Response | void> {
     const findProductPageService = new FindProductPageService();
     const products = await findProductPageService.execute();
     return response.status(200).json(products);

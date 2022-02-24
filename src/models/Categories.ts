@@ -1,7 +1,7 @@
-import { Entity, Column, CreateDateColumn, UpdateDateColumn, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
 
 @Entity('categories')
-export default class Categories {
+class Categories {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
@@ -13,4 +13,6 @@ export default class Categories {
 
   @UpdateDateColumn()
   updated_at: Date;
-}
+};
+
+export default Categories;

@@ -1,3 +1,3 @@
-export default interface ICreateCategoriestDTO {
+export default interface ICreateCategoriesDTO {
   name: string;
 };

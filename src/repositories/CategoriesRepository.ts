@@ -5,21 +5,21 @@ import ICategoriesRepository from "./interface/ICategoriesRepository";
 
 
 class CategoriesRepository implements ICategoriesRepository {
-  private ormRepository: Repository<Categories>
+  private ormRepository: Repository<Categories>;
 
   constructor() {
-    this.ormRepository = getRepository(Categories)
+    this.ormRepository = getRepository(Categories);
   };
 
   async create(dataCategory: ICreateCategoriesDTO): Promise<Categories> {
     const category = this.ormRepository.create(dataCategory);
-    await this.ormRepository.save(category)
-    return category
+    await this.ormRepository.save(category);
+    return category;
   };
 
   async find(): Promise<Categories[]> {
     const categories = await this.ormRepository.find();
-    return categories
+    return categories;
   };
 
   async findById(idData: string): Promise<Categories> {
@@ -32,4 +32,4 @@ class CategoriesRepository implements ICategoriesRepository {
   };
 };
 
-export default CategoriesRepository
+export default CategoriesRepository;

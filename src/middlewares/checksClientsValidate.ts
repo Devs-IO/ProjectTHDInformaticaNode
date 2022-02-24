@@ -1,7 +1,7 @@
-import { Request, Response, NextFunction } from "express";
+import { NextFunction, Request, Response } from "express";
 import { ObjectShape, OptionalObjectSchema } from "yup/lib/object";
 
-const checksUserValidate =
+const checksClientsValidate =
   (requestSchema: OptionalObjectSchema<ObjectShape>) =>
     async (request: Request, response: Response, next: NextFunction) => {
 
@@ -18,4 +18,4 @@ const checksUserValidate =
       }
     }
 
-export default checksUserValidate;
+export default checksClientsValidate;

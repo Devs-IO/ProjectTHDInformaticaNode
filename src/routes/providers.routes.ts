@@ -1,13 +1,13 @@
-import ProvidersController from "../controllers/ProviderController";
 import { Router } from "express";
-import checkProviderValidate from "../middlewares/checkProviderValidate";
-import requestSchema from "../middlewares/checkProviderValidator";
+import ProvidersController from "../controllers/ProvidersController";
+import checkProvidersValidate from "../middlewares/checkProvidersValidate";
+import requestSchema from "../middlewares/checkProvidersValidator";
 
 
-const providerRouter = Router()
-const providersController = new ProvidersController()
+const providersRouter = Router();
+const providersController = new ProvidersController();
 
-providerRouter.post('/', checkProviderValidate(requestSchema), providersController.create)
-providerRouter.get('/', providersController.find)
+providersRouter.post('/', checkProvidersValidate(requestSchema), providersController.create);
+providersRouter.get('/', providersController.find);
 
-export default providerRouter;
+export default providersRouter;

@@ -1,9 +1,9 @@
 import { Request, Response } from "express";
-import FindProvidersService from "../services/FindProviderService";
 import CreateProvidersService from "../services/CreateProvidersServices";
+import FindProvidersService from "../services/FindProviderService";
 
 export default class ProvidersController {
-  public async create(request: Request, response: Response) {
+  public async create(request: Request, response: Response): Promise<Response | void> {
 
     const {
       name,
@@ -24,11 +24,9 @@ export default class ProvidersController {
     return response.status(201).json(providers);
   };
 
-  public async find(request: Request, response: Response):Promise<Response | undefined> {
+  public async find(_: Request, response: Response): Promise<Response | void> {
     const findProvidersService = new FindProvidersService;
-
-    const providers =  await findProvidersService.execute();
-
-    return response.status(201).json(providers);
+    const providers = await findProvidersService.execute();
+    return response.status(200).json(providers);
   };
 };

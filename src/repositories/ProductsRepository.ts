@@ -6,7 +6,7 @@ import IProductsRepository from "./interface/IProductRepository";
 
 class ProductsRepository implements IProductsRepository {
 
-  private ormRepository: Repository<Products>
+  private ormRepository: Repository<Products>;
 
   constructor() {
     this.ormRepository = getRepository(Products);
@@ -14,13 +14,13 @@ class ProductsRepository implements IProductsRepository {
 
   async create(dataProduct: ICreateProductDTO): Promise<Products> {
     const product = this.ormRepository.create(dataProduct);
-    const products = await this.ormRepository.save(product)
+    const products = await this.ormRepository.save(product);
     return products;
   };
 
   async find(): Promise<Products[]> {
     const products = await this.ormRepository.find();
-    return products
+    return products;
   };
 
   async findByName(nameData: string): Promise<Products | undefined> {
@@ -29,11 +29,11 @@ class ProductsRepository implements IProductsRepository {
         { name: nameData },
       ],
     });
-    return product
+    return product;
   }
 
   async deleteById(id: string): Promise<void> {
-    await this.ormRepository.delete(id)
+    await this.ormRepository.delete(id);
   };
 };
 

@@ -2,7 +2,7 @@ import CategoriesRepository from "../repositories/CategoriesRepository";
 import ProductsRepository from "../repositories/ProductsRepository";
 import ProvidersRepository from "../repositories/ProvidersRepository";
 
-interface IproductsPage {
+interface IProductsPage {
   name: string,
   categories_name?: string,
   providers_name?: string,
@@ -21,7 +21,7 @@ class FindProductPageService {
     const providersRepository = new ProvidersRepository();
 
     const products = await productsRepository.find();
-    const productsPage: IproductsPage[] = [];
+    const productsPage: IProductsPage[] = [];
 
     for (const element of products) {
       const category = await categoriesRepository.findById(element.category_id);
