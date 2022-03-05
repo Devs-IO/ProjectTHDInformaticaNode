@@ -33,6 +33,10 @@ class ClientsRepository implements IClientsRepository {
     return clients;
   }
 
+  async deleteById(id: string): Promise<void> {
+    await this.ormRepository.delete(id);
+  };
+
 }
 
 export default ClientsRepository;
