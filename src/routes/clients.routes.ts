@@ -9,5 +9,6 @@ const clientsController = new ClientsController();
 clientsRouter.post('/', checksClientValidate(requestSchema), clientsController.create);
 clientsRouter.get('/', clientsController.find);
 clientsRouter.delete('/:id', clientsController.delete);
+clientsRouter.put('/:id', clientsController.update);
 
 export default clientsRouter;
