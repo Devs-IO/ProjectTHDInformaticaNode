@@ -1,5 +1,6 @@
 import { Request, Response, Router } from 'express';
 import categoriesRouter from './categories.routes';
+import citiesRouter from './cities.routes';
 import clientsRouter from "./clients.routes";
 import productsRouter from './products.routes';
 import providerRouter from './providers.routes';
@@ -16,6 +17,7 @@ routes.get('/', (request: Request, response: Response) => {
 routes.use("/clients", clientsRouter);
 routes.use("/products", productsRouter);
 routes.use("/categories", categoriesRouter);
-routes.use("/providers", providerRouter)
+routes.use("/providers", providerRouter);
+routes.use("/cities", citiesRouter);
 
 export default routes;

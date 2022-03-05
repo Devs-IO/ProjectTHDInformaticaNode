@@ -5,9 +5,9 @@ import FindClientsService from "../services/FindClientsService";
 export default class ClientsController {
 
   public async create(request: Request, response: Response): Promise<Response | void> {
-    const { id, name, phone, email, cpf, city } = request.body;
+    const { name, phone, email, cpf, city_id } = request.body;
     const createClientsService = new CreateClientsService();
-    const clients = await createClientsService.execute({ name, phone, email, cpf, city });
+    const clients = await createClientsService.execute({ name, phone, email, cpf, city_id });
     return response.status(201).json(clients);
   };
 

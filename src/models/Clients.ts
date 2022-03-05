@@ -1,4 +1,5 @@
-import { Column, Entity, CreateDateColumn, UpdateDateColumn, PrimaryGeneratedColumn } from "typeorm";
+import { Column, CreateDateColumn, Entity, JoinColumn, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
+import Cities from "./Cities";
 
 @Entity('clients')
 class Clients {
@@ -17,8 +18,12 @@ class Clients {
   @Column()
   cpf: string;
 
-  @Column()
-  city: string;
+  @Column('uuid')
+  city_id: string;
+
+  @OneToMany(() => Cities, cities => cities.id)
+  @JoinColumn({ name: 'city_id' })
+  city: Cities;
 
   @CreateDateColumn()
   created_at: Date;
