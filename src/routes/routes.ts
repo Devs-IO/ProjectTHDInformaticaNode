@@ -4,6 +4,7 @@ import citiesRouter from './cities.routes';
 import clientsRouter from "./clients.routes";
 import productsRouter from './products.routes';
 import providerRouter from './providers.routes';
+import statusRoute from './status.routes';
 
 const routes = Router();
 
@@ -19,5 +20,6 @@ routes.use("/products", productsRouter);
 routes.use("/categories", categoriesRouter);
 routes.use("/providers", providerRouter);
 routes.use("/cities", citiesRouter);
+routes.use("/status", statusRoute);
 
 export default routes;
