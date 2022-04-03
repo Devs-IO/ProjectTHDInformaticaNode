@@ -58,16 +58,16 @@ export class CreateSelld1647717443184 implements MigrationInterface {
         })
       ),
       await queryRunner.createForeignKey (
-        'clients',
+        'sells',
         new TableForeignKey({
           name: 'FKSelldClients',
           columnNames: ['clients_id'],
           referencedTableName: 'clients',
           referencedColumnNames: ['id'],
         })
-      ),
+      )
       await queryRunner.createForeignKey (
-        'status',
+        'sells',
         new TableForeignKey({
           name: 'FKSelldStatus',
           columnNames: ['status_id'],
@@ -76,13 +76,13 @@ export class CreateSelld1647717443184 implements MigrationInterface {
         })
       ),
       await queryRunner.createForeignKey (
-        'paymentOptions',
-        new TableForeignKey({
-          name: 'FKSelldPaymentOptions',
-          columnNames: ['paymentOptions_id'],
-          referencedTableName: 'paymentOptions',
-          referencedColumnNames: ['id'],
-        })
+        'sells',
+      new TableForeignKey({
+        name: 'FKSelldPaymentOptions',
+        columnNames: ['paymentOptions_id'],
+        referencedTableName: 'paymentOptions',
+        referencedColumnNames: ['id'],
+      })
       )
     };
 
