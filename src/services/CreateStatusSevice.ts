@@ -1,6 +1,6 @@
-import ICreateStatusDTO from "dtos/ICreateStatusDTO";
-import Status from "models/Status";
-import StatusRepository from "repositories/StatusRepository";
+import ICreateStatusDTO from "../dtos/ICreateStatusDTO";
+import Status from "../models/Status";
+import StatusRepository from "../repositories/StatusRepository";
 
 
 class CreateStatusService {
