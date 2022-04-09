@@ -1,5 +1,5 @@
 import Sells from "models/Sells";
-import SellsRepository from "repositories/SellsRepository";
+import SellsRepository from "../repositories/SellsRepository";
 
 
 class FindSellsByClientIdService {

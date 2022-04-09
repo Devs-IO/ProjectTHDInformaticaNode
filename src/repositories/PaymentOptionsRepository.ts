@@ -1,7 +1,7 @@
 import ICreatePaymentOptionsDTO from "../dtos/ICreatePaymentOptionsDTO";
 import { getRepository, Repository } from "typeorm";
 import IPaymentOptions from "./interface/IPaymentOptionsRepository";
-import PaymentOptions from "models/PaymentOptions";
+import PaymentOptions from "../models/PaymentOptions";
 
 class PaymentOptionsRepository implements IPaymentOptions {
 

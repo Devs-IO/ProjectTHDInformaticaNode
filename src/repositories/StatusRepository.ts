@@ -1,7 +1,7 @@
 import IStatusRepository from "./interface/IStatusRepository";
 import { getRepository, Repository } from "typeorm";
-import Status from "models/Status";
-import ICreateStatusDTO from "dtos/ICreateStatusDTO";
+import Status from "../models/Status";
+import ICreateStatusDTO from "../dtos/ICreateStatusDTO";
 
 
 class StatusRepository implements IStatusRepository {
