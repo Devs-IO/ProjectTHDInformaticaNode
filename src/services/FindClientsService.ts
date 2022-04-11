@@ -12,7 +12,7 @@ interface IClientsPage {
 
 class FindClientsService {
 
-  public async execute(): Promise<Clients[]> {
+  public async execute(): Promise<IClientsPage[]> {
     const clientsRepository = new ClientsRepository();
     const citiesRepository = new CitiesRepository();
     let clientsPage = [];
@@ -27,10 +27,10 @@ class FindClientsService {
         phone: element.phone,
         email: element.email,
         cpf: element.cpf,
-        city,
+        city: city.name,
       });
     };
-    return clients;
+    return clientsPage;
   }
 }
 

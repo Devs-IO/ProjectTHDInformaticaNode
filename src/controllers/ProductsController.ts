@@ -3,6 +3,7 @@ import CreateProductsService from "../services/CreateProductsService";
 import DeleteProductService from "../services/DeleteProductService";
 import FindProductPageService from "../services/FindProductsPageService";
 import FindProductService from "../services/FindProductsService";
+import UpdateProductService from "../services/UpdateProductService";
 
 export default class ProductsController {
   public async create(request: Request, response: Response): Promise<Response | void> {
@@ -47,5 +48,29 @@ export default class ProductsController {
     const findProductPageService = new FindProductPageService();
     const products = await findProductPageService.execute();
     return response.status(200).json(products);
+  };
+
+  public async update(request: Request, response: Response): Promise<Response | void> {
+    const { id } = request.params;
+    const { name,
+      category_id,
+      provider_id,
+      sell_price,
+      buy_price,
+      description,
+      quantity,
+      code } = request.body;
+    const updateProductService = new UpdateProductService();
+    await updateProductService.execute({
+      name,
+      category_id,
+      provider_id,
+      sell_price,
+      buy_price,
+      description,
+      quantity,
+      code
+    }, id);
+    return response.status(204).json();
   };
 };

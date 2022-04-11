@@ -3,6 +3,7 @@ import ProductsRepository from "../repositories/ProductsRepository";
 import ProvidersRepository from "../repositories/ProvidersRepository";
 
 interface IProductsPage {
+  id: string,
   name: string,
   categories_name?: string,
   providers_name?: string,
@@ -28,6 +29,7 @@ class FindProductPageService {
       const provider = await providersRepository.findById(element.provider_id);
 
       productsPage.push({
+        id: element.id,
         name: element.name,
         categories_name: category.name,
         providers_name: provider.contact_name,

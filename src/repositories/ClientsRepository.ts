@@ -33,6 +33,14 @@ class ClientsRepository implements IClientsRepository {
     return clients;
   }
 
+  async deleteById(id: string): Promise<void> {
+    await this.ormRepository.delete(id);
+  };
+
+  async updateById(dataProduct: ICreateClientDTO, id: string): Promise<void> {
+    await this.ormRepository.update(id, dataProduct);
+  };
+
 }
 
 export default ClientsRepository;

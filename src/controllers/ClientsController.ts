@@ -1,6 +1,8 @@
 import { Request, Response } from "express";
 import CreateClientsService from "../services/CreateClientsService";
 import FindClientsService from "../services/FindClientsService";
+import DeleteClientsService from "../services/DeleteClientsService";
+import UpdateClientsService from "../services/UpdateClientsService";
 
 export default class ClientsController {
 
@@ -16,4 +18,19 @@ export default class ClientsController {
     const clients = await findClientsService.execute();
     return response.status(200).json(clients);
   };
+
+  public async delete(request: Request, response: Response): Promise<Response | void> {
+    const { id } = request.params;
+    const deleteClientsService = new DeleteClientsService();
+    await deleteClientsService.execute(id);
+    return response.status(204).json({ message: "successfully deleted" });
+  };
+
+  public async update(request: Request, response: Response): Promise<Response | void> {
+    const { id } = request.params;
+    const { name, phone, email, cpf, city_id } = request.body;
+    const updateClientsService = new UpdateClientsService();
+    await updateClientsService.execute({ name, phone, email, cpf, city_id }, id);
+    return response.status(204).json({ message: "successfully updated" });
+  }
 };
