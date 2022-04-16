@@ -21,7 +21,7 @@ class InstallmentsSellsRepository implements IInstallmentsSellsRepository {
     return sells;
   };
 
-  async fidBySellsId(sellsId: string): Promise<InstallmentsSells[] | void> {
+  async findBySellsId(sellsId: string): Promise<InstallmentsSells[] | any[]> {
     const installmentsSells = this.ormRepository.find({
       where: [
         { sells_id: sellsId },

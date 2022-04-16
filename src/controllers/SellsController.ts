@@ -44,9 +44,9 @@ export default class SellsController {
   };
 
   public async findByClientId(request: Request, response: Response): Promise<Response | void> {
-    const { client_id } = request.params;
+    const { id } = request.params;
     const findSellsByClientId = new FindSellsByClientIdService();
-    const sells = await findSellsByClientId.execute(client_id);
+    const sells = await findSellsByClientId.execute(id);
     return response.status(200).json(sells);
   };
 
