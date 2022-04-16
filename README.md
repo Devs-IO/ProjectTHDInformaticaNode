@@ -83,8 +83,6 @@
 
 > Link do deploy da aplicação do Back-end: https://thdinformatica.herokuapp.com/
 
-Se ainda não houver deploy, insira capturas de tela da aplicação ou gifs
-
 
 
 ## Pré-requisitos :wrench:
