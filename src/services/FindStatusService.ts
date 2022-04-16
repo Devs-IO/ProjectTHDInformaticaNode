@@ -3,7 +3,7 @@ import StatusRepository from "../repositories/StatusRepository";
 
 
 class FindStatusService {
-  public async execute():Promise<Status[]> {
+  public async execute(): Promise<Status[]> {
     const statusRepository = new StatusRepository();
     const status = await statusRepository.find();
     return status;

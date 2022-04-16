@@ -45,21 +45,15 @@ export default class SellsController {
 
   public async findByClientId(request: Request, response: Response): Promise<Response | void> {
     const { client_id } = request.params;
-
     const findSellsByClientId = new FindSellsByClientIdService();
-
     const sells = await findSellsByClientId.execute(client_id);
-
-    return response.status(201).json(sells);
+    return response.status(200).json(sells);
   };
 
   public async deleteById(request: Request, response: Response): Promise<Response | void> {
     const { id } = request.params;
-
     const deleteSellsService = new DeleteSellsService();
-
     await deleteSellsService.execute(id);
-
     return response.status(204).json({ message: "successfully deleted" });
   };
 
