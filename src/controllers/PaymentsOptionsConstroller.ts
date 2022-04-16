@@ -1,20 +1,20 @@
-import { Response, Request } from "express";
-import FindPaymentOptionsService from "../services/FindPaymentOptionsService";
+import { Request, Response } from "express";
 import CreatePaymentOptionsService from "../services/CreatePaymentOptionsService";
+import FindPaymentOptionsService from "../services/FindPaymentOptionsService";
 
 
 export default class PaymentsOptionsController {
-  public async create(response: Response, request: Request): Promise<Response|void> {
+  public async create(request: Request, response: Response): Promise<Response | void> {
     const { options } = request.body;
 
     const createPaymentOptionsService = new CreatePaymentOptionsService();
 
-    const  paymentOption = await createPaymentOptionsService.execute({ options });
+    const paymentOption = await createPaymentOptionsService.execute({ options });
 
     return response.status(201).json(paymentOption)
   };
 
-  public async find(response: Response): Promise<Response|void> {
+  public async find(response: Response): Promise<Response | void> {
     const findPaymentOptionsService = new FindPaymentOptionsService();
 
     const paymentOptions = await findPaymentOptionsService.execute();

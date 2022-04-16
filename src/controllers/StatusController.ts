@@ -1,10 +1,10 @@
-import { Response, Request } from "express";
-import FindStatusService from "../services/FindStatusService";
+import { Request, Response } from "express";
 import CreateStatusService from "../services/CreateStatusSevice";
+import FindStatusService from "../services/FindStatusService";
 
 
 export default class StatusController {
-  public async create(response:Response,request:Request):Promise<Response|void> {
+  public async create(request: Request, response: Response): Promise<Response | void> {
     const { paid } = request.body;
 
     const createStatusService = new CreateStatusService();
@@ -14,7 +14,7 @@ export default class StatusController {
     return response.status(201).json(status);
   };
 
-  public async find(response:Response):Promise <Response|void> {
+  public async find(_: Request, response: Response): Promise<Response | void> {
     const findstatusService = new FindStatusService();
 
     const status = await findstatusService.execute();

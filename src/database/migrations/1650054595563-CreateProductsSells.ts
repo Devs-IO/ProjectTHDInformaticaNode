@@ -1,11 +1,11 @@
 import { MigrationInterface, QueryRunner, Table, TableForeignKey } from "typeorm";
 
-export class CreateSelld1647717443184 implements MigrationInterface {
+export class CreateProductsSells1650054595563 implements MigrationInterface {
 
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.createTable(
       new Table({
-        name: 'sells',
+        name: 'products_sells',
         columns: [
           {
             name: 'id',
@@ -16,33 +16,24 @@ export class CreateSelld1647717443184 implements MigrationInterface {
             isUnique: true,
           },
           {
-            name: 'clients_id',
+            name: 'products_id',
             type: 'uuid',
             isNullable: false,
           },
           {
-            name: 'status_id',
+            name: 'sells_id',
             type: 'uuid',
             isNullable: false,
           },
           {
-            name: 'payment_options_id',
-            type: 'uuid',
-            isNullable: false,
-          },
-          {
-            name: 'code',
-            type: 'varchar',
-            isNullable: true,
-          },
-          {
-            name: 'discount',
+            name: 'quantity',
             type: 'integer',
-            isNullable: true,
+            isNullable: false,
           },
           {
-            name: 'total_value',
+            name: 'value',
             type: 'varchar',
+            isNullable: true,
           },
           {
             name: 'created_at',
@@ -58,40 +49,31 @@ export class CreateSelld1647717443184 implements MigrationInterface {
       })
     ),
       await queryRunner.createForeignKey(
-        'sells',
+        'products_sells',
         new TableForeignKey({
-          name: 'FKSelldClients',
-          columnNames: ['clients_id'],
-          referencedTableName: 'clients',
+          name: 'FKProductsSells',
+          columnNames: ['products_id'],
+          referencedTableName: 'products',
           referencedColumnNames: ['id'],
         })
       )
     await queryRunner.createForeignKey(
-      'sells',
+      'products_sells',
       new TableForeignKey({
-        name: 'FKSelldStatus',
-        columnNames: ['status_id'],
-        referencedTableName: 'status',
+        name: 'FKSellsProducts',
+        columnNames: ['sells_id'],
+        referencedTableName: 'sells',
         referencedColumnNames: ['id'],
       })
-    ),
-      await queryRunner.createForeignKey(
-        'sells',
-        new TableForeignKey({
-          name: 'FKSelldPaymentOptions',
-          columnNames: ['payment_options_id'],
-          referencedTableName: 'payment_options',
-          referencedColumnNames: ['id'],
-        })
-      )
+    )
   };
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.dropForeignKey('sells', 'FKSelldClients');
-    await queryRunner.dropForeignKey('sells', 'FKSelldStatus');
-    await queryRunner.dropForeignKey('sells', 'FKSelldPaymentOptions');
+    await queryRunner.dropForeignKey('products_sells', 'FKProductsSells');
+    await queryRunner.dropForeignKey('products_sells', 'FKSellsProducts');
 
-    await queryRunner.dropTable('sells')
+    await queryRunner.dropTable('products_sells')
   }
+
 
 }

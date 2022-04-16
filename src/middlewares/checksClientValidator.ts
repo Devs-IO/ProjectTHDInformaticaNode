@@ -6,7 +6,7 @@ const requestSchema = Yup.object({
   phone: Yup.string().required().length(11),
   email: Yup.string().max(100).email(),
   cpf: Yup.string().length(11),
-  city: Yup.string().max(100),
+  city_id: Yup.string().max(100),
 });
 
 export default requestSchema;

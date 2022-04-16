@@ -14,6 +14,7 @@ export class AlterCitiesClients1646502187665 implements MigrationInterface {
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
+    await queryRunner.dropForeignKey('clients', 'id_fk_cities');
 
     await queryRunner.query(`
       ALTER TABLE clients DROP COLUMN city_id;
