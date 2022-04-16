@@ -12,8 +12,9 @@ class ProductsSellsRepository implements IProductsSellsRepository {
   };
 
   async create(dataProductsSells: ICreateProductsSellsDTO): Promise<ProductsSells> {
-    const ProductsSells = this.ormRepository.create(dataProductsSells);
-    return await this.ormRepository.save(ProductsSells);
+    const productsSells = this.ormRepository.create(dataProductsSells);
+    await this.ormRepository.save(productsSells);
+    return productsSells;
   };
 
   async find(): Promise<ProductsSells[]> {
@@ -21,10 +22,10 @@ class ProductsSellsRepository implements IProductsSellsRepository {
     return sells;
   };
 
-  async fidBySellsId(sellsId: string): Promise<ProductsSells[] | void> {
+  async findBySellsId(sellsId: string): Promise<ProductsSells[]> {
     const ProductsSells = this.ormRepository.find({
       where: [
-        { clients_id: sellsId },
+        { sells_id: sellsId },
       ],
     });
     return ProductsSells;

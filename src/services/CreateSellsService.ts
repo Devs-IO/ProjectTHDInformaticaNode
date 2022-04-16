@@ -2,7 +2,6 @@ import ICreateInstallmentsSellsDTO from "../dtos/ICreateInstallmentsSellsDTO";
 import ICreateProductsSellsDTO from "../dtos/ICreateProductsSellsDTO";
 import ICreateSellsDTO from "../dtos/ICreateSellsDTO";
 import InstallmentsSells from "../models/InstallmentsSells";
-import ProductsSells from "../models/ProductsSells";
 import InstallmentsSellsRepository from "../repositories/InstallmentsSellsRepository";
 import ProductsSellsRepository from "../repositories/ProductsSellsRepository";
 import SellsRepository from "../repositories/SellsRepository";
@@ -20,24 +19,20 @@ class CreateSellsService {
     const installmentsSellsRepository = new InstallmentsSellsRepository();
     const productsSellsRepository = new ProductsSellsRepository();
 
-    let installments: InstallmentsSells[] = [];
-    let products: ProductsSells[] = [];
-
     const sells = await sellsRepository.create(data.sells);
 
 
-    data.products.forEach(async product => {
+    const products = await Promise.all(data.products.map(async product => {
       product.sells_id = sells.id;
-      const productAnswer = await productsSellsRepository.create(product);
-      products.push(productAnswer);
-    });
+      return await productsSellsRepository.create(product);
+    }));
 
+    let installments: InstallmentsSells[] = [];
     if (data.installments.length > 0) {
-      data.installments.forEach(async installment => {
+      installments = await Promise.all(data.installments.map(async installment => {
         installment.sells_id = sells.id;
-        const installmentAnswer = await installmentsSellsRepository.create(installment);
-        installments.push(installmentAnswer);
-      });
+        return await installmentsSellsRepository.create(installment);
+      }));
     }
 
     return { sells, products, installments };

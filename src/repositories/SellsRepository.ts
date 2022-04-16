@@ -1,7 +1,7 @@
 import { getRepository, Repository } from "typeorm";
-import ISellsRepository from "./interface/ISellsRepository";
-import Sells from "../models/Sells";
 import ICreateSellsDTO from "../dtos/ICreateSellsDTO";
+import Sells from "../models/Sells";
+import ISellsRepository from "./interface/ISellsRepository";
 
 
 class SellsRepository implements ISellsRepository {
@@ -22,10 +22,10 @@ class SellsRepository implements ISellsRepository {
     return sells;
   };
 
-  async fidByClientId(clientId: string): Promise<Sells[]|void> {
-    const sells = this.ormRepository.find({
+  async findByClientId(clientId: string): Promise<Sells[] | any[]> {
+    const sells = await this.ormRepository.find({
       where: [
-        {clients_id: clientId},
+        { clients_id: clientId },
       ],
     });
     return sells;
