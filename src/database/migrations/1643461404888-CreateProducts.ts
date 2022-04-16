@@ -89,6 +89,9 @@ export class CreateProducts1643461404888 implements MigrationInterface {
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
+    await queryRunner.dropForeignKey('products', 'FKProductsProvider');
+    await queryRunner.dropForeignKey('products', 'FKProductsCategory');
+
     await queryRunner.dropTable('products')
   }
 

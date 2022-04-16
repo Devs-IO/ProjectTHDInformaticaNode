@@ -5,11 +5,11 @@ const checksClientsValidate =
   (requestSchema: OptionalObjectSchema<ObjectShape>) =>
     async (request: Request, response: Response, next: NextFunction) => {
 
-      const { name, phone, email, cpf, city } = request.body;
+      const { name, phone, email, cpf, city_id } = request.body;
 
       try {
         await requestSchema.validate({
-          name, phone, email, cpf, city
+          name, phone, email, cpf, city_id
         });
 
         return next();
