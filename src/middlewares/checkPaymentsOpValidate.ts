@@ -1,16 +1,16 @@
-import { ObjectShape, OptionalObjectSchema } from "yup/lib/object";
 import { NextFunction, Request, Response } from "express";
+import { ObjectShape, OptionalObjectSchema } from "yup/lib/object";
 
 
 const CheckPaymentOpValidate =
   (requestSchema: OptionalObjectSchema<ObjectShape>) =>
-    async (request:Request, response:Response, next: NextFunction) => {
+    async (request: Request, response: Response, next: NextFunction) => {
       const { options } = request.body;
 
       try {
-        await requestSchema.validate ({ options });
+        await requestSchema.validate({ options });
 
-        return next;
+        return next();
       } catch (error) {
         throw new Error();
       };

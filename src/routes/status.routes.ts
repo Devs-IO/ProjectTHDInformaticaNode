@@ -1,13 +1,13 @@
-import { Router } from "express"
+import { Router } from "express";
+import StatusController from "../controllers/StatusController";
 import CheckStatusValidate from "../middlewares/checkStatusValidate";
 import requestSchema from "../middlewares/checkStatusValidator";
-import StatusController from "../controllers/StatusController"
 
 
-const statusRoute = Router();
+const statusRouter = Router();
 const statusController = new StatusController();
 
-statusRoute.post('/',CheckStatusValidate(requestSchema) , statusController.create);
-statusRoute.get('/', statusController.find);
+statusRouter.post('/', CheckStatusValidate(requestSchema), statusController.create);
+statusRouter.get('/', statusController.find);
 
-export default statusRoute;
+export default statusRouter;
