@@ -1,5 +1,6 @@
 import { NextFunction, Request, Response } from "express";
 import { ObjectShape, OptionalObjectSchema } from "yup/lib/object";
+import AppError from "../errors/AppError";
 
 const checkProductValidate = (requestSchema: OptionalObjectSchema<ObjectShape>) =>
 
@@ -29,8 +30,7 @@ const checkProductValidate = (requestSchema: OptionalObjectSchema<ObjectShape>) 
       return next();
     }
     catch (error) {
-      console.log(error)
-      throw new Error("Product validation error");
+      throw new AppError("Product validation error");
     }
   }
 

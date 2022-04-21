@@ -1,5 +1,6 @@
 import { NextFunction, Request, Response } from "express";
 import { ObjectShape, OptionalObjectSchema } from "yup/lib/object";
+import AppError from "../errors/AppError";
 
 
 const CheckPaymentOpValidate =
@@ -12,7 +13,7 @@ const CheckPaymentOpValidate =
 
         return next();
       } catch (error) {
-        throw new Error();
+        throw new AppError("Payment validation error");
       };
     };
 

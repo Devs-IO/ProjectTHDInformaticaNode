@@ -1,5 +1,6 @@
 import { NextFunction, Request, Response } from "express";
 import { ObjectShape, OptionalObjectSchema } from "yup/lib/object";
+import AppError from "../errors/AppError";
 
 
 const CheckSellsValidate =
@@ -26,7 +27,7 @@ const CheckSellsValidate =
 
         return next;
       } catch (error) {
-        throw new Error();
+        throw new AppError("Sells validation error.");
       };
     };
 

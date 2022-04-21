@@ -1,5 +1,6 @@
 import { NextFunction, Request, Response } from "express";
 import { ObjectShape, OptionalObjectSchema } from "yup/lib/object";
+import AppError from "../errors/AppError";
 
 
 const checkProvidersValidate = (requestSchema: OptionalObjectSchema<ObjectShape>) =>
@@ -19,7 +20,7 @@ const checkProvidersValidate = (requestSchema: OptionalObjectSchema<ObjectShape>
       });
       return next();
     } catch (error) {
-      throw new Error("Providers validation error")
+      throw new AppError("Providers validation error")
     }
   }
 
