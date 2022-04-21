@@ -1,4 +1,3 @@
-import Clients from "../models/Clients";
 import CitiesRepository from "../repositories/CitiesRepository";
 import ClientsRepository from "../repositories/ClientsRepository";
 
@@ -23,6 +22,7 @@ class FindClientsService {
       const city = await citiesRepository.findById(element.city_id);
 
       clientsPage.push({
+        id: element.id,
         name: element.name,
         phone: element.phone,
         email: element.email,

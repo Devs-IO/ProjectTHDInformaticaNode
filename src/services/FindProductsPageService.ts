@@ -32,7 +32,7 @@ class FindProductPageService {
         id: element.id,
         name: element.name,
         categories_name: category.name,
-        providers_name: provider.contact_name,
+        providers_name: provider.name,
         sell_price: element.sell_price,
         description: element.description,
         buy_price: element.buy_price,
