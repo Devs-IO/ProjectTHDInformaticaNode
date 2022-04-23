@@ -33,6 +33,15 @@ class ClientsRepository implements IClientsRepository {
     return clients;
   }
 
+  async findById(id: string): Promise<Clients> {
+    const client = await this.ormRepository.findOne({
+      where: [
+        { id },
+      ],
+    });
+    return client!;
+  }
+
   async deleteById(id: string): Promise<void> {
     await this.ormRepository.delete(id);
   };

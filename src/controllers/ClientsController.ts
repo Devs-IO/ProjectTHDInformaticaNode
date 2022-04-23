@@ -1,7 +1,8 @@
 import { Request, Response } from "express";
 import CreateClientsService from "../services/CreateClientsService";
-import FindClientsService from "../services/FindClientsService";
 import DeleteClientsService from "../services/DeleteClientsService";
+import FindByIdClientsService from "../services/FindByIdClientsService";
+import FindClientsService from "../services/FindClientsService";
 import UpdateClientsService from "../services/UpdateClientsService";
 
 export default class ClientsController {
@@ -16,6 +17,13 @@ export default class ClientsController {
   public async find(_: Request, response: Response): Promise<Response | void> {
     const findClientsService = new FindClientsService();
     const clients = await findClientsService.execute();
+    return response.status(200).json(clients);
+  };
+
+  public async findById(request: Request, response: Response): Promise<Response | void> {
+    const { id } = request.params;
+    const findByIdClientsService = new FindByIdClientsService();
+    const clients = await findByIdClientsService.execute(id);
     return response.status(200).json(clients);
   };
 
