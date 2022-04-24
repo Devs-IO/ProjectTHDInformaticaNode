@@ -1,4 +1,5 @@
 import { Request, Response } from "express";
+import FindByActiveClientService from "../services/FindByActiveClientsService";
 import CreateClientsService from "../services/CreateClientsService";
 import DeleteClientsService from "../services/DeleteClientsService";
 import FindByIdClientsService from "../services/FindByIdClientsService";
@@ -40,5 +41,11 @@ export default class ClientsController {
     const updateClientsService = new UpdateClientsService();
     await updateClientsService.execute({ name, phone, email, cpf, city_id }, id);
     return response.status(204).json({ message: "successfully updated" });
-  }
+  };
+
+  public async findByActive(_:Request, response:Response): Promise <Response | void> {
+    const findByActiveClientService = new FindByActiveClientService();
+    const clients = findByActiveClientService.execute();
+    return response.status(200).json(clients);
+  };
 };

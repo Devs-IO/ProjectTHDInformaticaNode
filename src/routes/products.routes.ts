@@ -11,4 +11,6 @@ productsRouter.get('/', productsController.findProductPage);
 productsRouter.delete('/:id', productsController.delete);
 productsRouter.get('/dev', productsController.find);
 productsRouter.put('/:id', productsController.update);
+productsRouter.get('/findActive/', productsController.findByActive);
+
 export default productsRouter;

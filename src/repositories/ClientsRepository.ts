@@ -50,6 +50,16 @@ class ClientsRepository implements IClientsRepository {
     await this.ormRepository.update(id, dataProduct);
   };
 
+  async findByActive(): Promise<Clients[]> {
+    const clients = this.ormRepository.find({
+      where: [
+        { active: true }
+      ]
+    });
+
+    return clients
+  };
+
 }
 
 export default ClientsRepository;

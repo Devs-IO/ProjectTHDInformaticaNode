@@ -1,4 +1,5 @@
 import { Request, Response } from "express";
+import FindByActiveProductsService from "../services/FindByActiveProductsService";
 import CreateProductsService from "../services/CreateProductsService";
 import DeleteProductService from "../services/DeleteProductService";
 import FindProductPageService from "../services/FindProductsPageService";
@@ -72,5 +73,11 @@ export default class ProductsController {
       code
     }, id);
     return response.status(204).json();
+  };
+
+  public async findByActive (_:Request, response:Response): Promise<Response | void> {
+    const findByActiveProductsService = new FindByActiveProductsService();
+    const products = findByActiveProductsService.execute();
+    return response.status(200).json(products);
   };
 };

@@ -7,4 +7,5 @@ export default interface ICreateProductsDTO {
   description?: string,
   quantity: string,
   code?: string
+  active?: boolean,
 };

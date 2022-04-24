@@ -11,5 +11,6 @@ clientsRouter.get('/', clientsController.find);
 clientsRouter.get('/:id', clientsController.findById);
 clientsRouter.delete('/:id', clientsController.delete);
 clientsRouter.put('/:id', clientsController.update);
+clientsRouter.get('/findActive/', clientsController.findByActive);
 
 export default clientsRouter;
