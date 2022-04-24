@@ -50,6 +50,10 @@ class ClientsRepository implements IClientsRepository {
     await this.ormRepository.update(id, dataProduct);
   };
 
+  async updateByIdActive(id: string): Promise<void> {
+    await this.ormRepository.update(id, { active: false });
+  };
+
 }
 
 export default ClientsRepository;

@@ -10,6 +10,7 @@ clientsRouter.post('/', checksClientValidate(requestSchema), clientsController.c
 clientsRouter.get('/', clientsController.find);
 clientsRouter.get('/:id', clientsController.findById);
 clientsRouter.delete('/:id', clientsController.delete);
+clientsRouter.put('/uploadActive/:id', clientsController.updateActive);
 clientsRouter.put('/:id', clientsController.update);
 
 export default clientsRouter;

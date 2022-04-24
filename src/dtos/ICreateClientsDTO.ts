@@ -4,4 +4,5 @@ export default interface ICreateClientDTO {
   email: string;
   cpf: string;
   city_id: string;
+  active?: boolean;
 }

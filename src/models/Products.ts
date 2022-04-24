@@ -1,4 +1,4 @@
-import { Column, Entity, CreateDateColumn, UpdateDateColumn, PrimaryGeneratedColumn, OneToMany, JoinColumn } from 'typeorm';
+import { Column, CreateDateColumn, Entity, JoinColumn, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
 import Categories from './Categories';
 import Providers from './Providers';
 
@@ -37,7 +37,10 @@ class Products {
   quantity: string;
 
   @Column()
-  code: string
+  code: string;
+
+  @Column()
+  active: boolean;
 
   @CreateDateColumn()
   created_at: Date;

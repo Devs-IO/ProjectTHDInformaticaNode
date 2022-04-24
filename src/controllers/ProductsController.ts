@@ -3,6 +3,7 @@ import CreateProductsService from "../services/CreateProductsService";
 import DeleteProductService from "../services/DeleteProductService";
 import FindProductPageService from "../services/FindProductsPageService";
 import FindProductService from "../services/FindProductsService";
+import UpdateProductsActiveService from "../services/UpdateProductsActiveService";
 import UpdateProductService from "../services/UpdateProductService";
 
 export default class ProductsController {
@@ -73,4 +74,11 @@ export default class ProductsController {
     }, id);
     return response.status(204).json();
   };
+
+  public async updateActive(request: Request, response: Response): Promise<Response | void> {
+    const { id } = request.params;
+    const updateProductsActiveService = new UpdateProductsActiveService();
+    await updateProductsActiveService.execute(id);
+    return response.status(204).json({ message: "successfully updated" });
+  }
 };

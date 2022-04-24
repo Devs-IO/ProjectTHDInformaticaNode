@@ -10,5 +10,7 @@ productsRouter.post('/', checkProductValidate(requestSchema), productsController
 productsRouter.get('/', productsController.findProductPage);
 productsRouter.delete('/:id', productsController.delete);
 productsRouter.get('/dev', productsController.find);
+productsRouter.put('/uploadActive/:id', productsController.updateActive);
 productsRouter.put('/:id', productsController.update);
+
 export default productsRouter;

@@ -28,6 +28,7 @@ class FindClientsService {
         email: element.email,
         cpf: element.cpf,
         city: city.name,
+        active: element.active,
       });
     };
     return clientsPage;
