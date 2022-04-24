@@ -39,6 +39,9 @@ class Products {
   @Column()
   code: string
 
+  @Column()
+  active: boolean;
+
   @CreateDateColumn()
   created_at: Date;
 
