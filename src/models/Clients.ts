@@ -18,6 +18,9 @@ class Clients {
   @Column()
   cpf: string;
 
+  @Column()
+  active: boolean;
+
   @Column('uuid')
   city_id: string;
 
