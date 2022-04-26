@@ -60,7 +60,8 @@ export default class ProductsController {
       buy_price,
       description,
       quantity,
-      code } = request.body;
+      code,
+      active } = request.body;
     const updateProductService = new UpdateProductService();
     await updateProductService.execute({
       name,
@@ -70,7 +71,8 @@ export default class ProductsController {
       buy_price,
       description,
       quantity,
-      code
+      code,
+      active
     }, id);
     return response.status(204).json();
   };
