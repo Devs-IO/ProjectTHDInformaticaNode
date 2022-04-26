@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import CreateProductsService from "../services/CreateProductsService";
 import DeleteProductService from "../services/DeleteProductService";
+import FindByIdProductService from "../services/FindByIdProductService";
 import FindProductPageService from "../services/FindProductsPageService";
 import FindProductService from "../services/FindProductsService";
 import UpdateProductsActiveService from "../services/UpdateProductsActiveService";
@@ -35,6 +36,13 @@ export default class ProductsController {
   public async find(_: Request, response: Response): Promise<Response | void> {
     const findProductService = new FindProductService();
     const product = await findProductService.execute();
+    return response.status(200).json(product);
+  };
+
+  public async findById(request: Request, response: Response): Promise<Response | void> {
+    const { id } = request.params;
+    const findProductService = new FindByIdProductService();
+    const product = await findProductService.execute(id);
     return response.status(200).json(product);
   };
 

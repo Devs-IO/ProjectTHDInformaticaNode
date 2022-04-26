@@ -12,6 +12,7 @@ interface IProductsPage {
   description?: string,
   quantity: string,
   code?: string,
+  active: boolean
 };
 
 class FindProductPageService {
@@ -38,6 +39,7 @@ class FindProductPageService {
         buy_price: element.buy_price,
         quantity: element.quantity,
         code: element.code,
+        active: element.active
       })
     };
     return productsPage;
