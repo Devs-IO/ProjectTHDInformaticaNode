@@ -7,4 +7,6 @@ export default interface IProductsRepository {
   findByName(nameData: string): Promise<Products | undefined>;
   deleteById(id: string): Promise<void>;
   findByActive(): Promise<Products[]>;
+  updateByIdActive(id: string): Promise<void>;
+  findById(id: string): Promise<Products>;
 }

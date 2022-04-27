@@ -57,7 +57,11 @@ class ClientsRepository implements IClientsRepository {
       ]
     });
 
-    return clients
+    return clients;
+  };
+
+  async updateByIdActive(id: string): Promise<void> {
+    await this.ormRepository.update(id, { active: false });
   };
 
 }

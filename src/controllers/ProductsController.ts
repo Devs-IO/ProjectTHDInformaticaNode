@@ -2,8 +2,10 @@ import { Request, Response } from "express";
 import FindByActiveProductsService from "../services/FindByActiveProductsService";
 import CreateProductsService from "../services/CreateProductsService";
 import DeleteProductService from "../services/DeleteProductService";
+import FindByIdProductService from "../services/FindByIdProductService";
 import FindProductPageService from "../services/FindProductsPageService";
 import FindProductService from "../services/FindProductsService";
+import UpdateProductsActiveService from "../services/UpdateProductsActiveService";
 import UpdateProductService from "../services/UpdateProductService";
 
 export default class ProductsController {
@@ -38,6 +40,13 @@ export default class ProductsController {
     return response.status(200).json(product);
   };
 
+  public async findById(request: Request, response: Response): Promise<Response | void> {
+    const { id } = request.params;
+    const findProductService = new FindByIdProductService();
+    const product = await findProductService.execute(id);
+    return response.status(200).json(product);
+  };
+
   public async delete(request: Request, response: Response): Promise<Response | void> {
     const { id } = request.params;
     const deleteProductService = new DeleteProductService();
@@ -60,7 +69,8 @@ export default class ProductsController {
       buy_price,
       description,
       quantity,
-      code } = request.body;
+      code,
+      active } = request.body;
     const updateProductService = new UpdateProductService();
     await updateProductService.execute({
       name,
@@ -70,7 +80,8 @@ export default class ProductsController {
       buy_price,
       description,
       quantity,
-      code
+      code,
+      active
     }, id);
     return response.status(204).json();
   };
@@ -80,4 +91,11 @@ export default class ProductsController {
     const products = findByActiveProductsService.execute();
     return response.status(200).json(products);
   };
+
+  public async updateActive(request: Request, response: Response): Promise<Response | void> {
+    const { id } = request.params;
+    const updateProductsActiveService = new UpdateProductsActiveService();
+    await updateProductsActiveService.execute(id);
+    return response.status(204).json({ message: "successfully updated" });
+  }
 };

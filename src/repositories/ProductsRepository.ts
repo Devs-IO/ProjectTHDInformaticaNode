@@ -23,6 +23,15 @@ class ProductsRepository implements IProductsRepository {
     return products;
   };
 
+  async findById(id: string): Promise<Products> {
+    const product = await this.ormRepository.findOne({
+      where: [
+        { id },
+      ],
+    });
+    return product!;
+  };
+
   async findByName(nameData: string): Promise<Products | undefined> {
     const product = await this.ormRepository.findOne({
       where: [
@@ -50,6 +59,9 @@ class ProductsRepository implements IProductsRepository {
     return products;
   };
 
+  async updateByIdActive(id: string): Promise<void> {
+    await this.ormRepository.update(id, { active: false });
+  };
 };
 
 export default ProductsRepository;

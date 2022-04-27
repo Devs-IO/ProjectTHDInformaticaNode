@@ -8,4 +8,5 @@ export default interface IProductsSellsRepository {
   findBySellsId(sellsId: string): Promise<ProductsSells[] | void>;
   deleteById(id: string): Promise<void>;
   updateById(dataProductsSells: ICreateProductsSellsDTO, id: string): Promise<void>;
+  deleteBySellsId(id: string): Promise<void>;
 };

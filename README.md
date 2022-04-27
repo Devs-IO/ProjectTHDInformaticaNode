@@ -5,6 +5,7 @@
   <p align="center">
     <a href="https://yarnpkg.com/"><img alt="Yarn" src="https://github.com/yarnpkg/assets/blob/master/yarn-kitten-full.png?raw=true" width="80"></a>
     <a href="https://nodejs.org"><img alt="NODEJS" src="https://avatars.githubusercontent.com/u/9950313?s=200&v=4" width="80"></a>
+    <a href="typescriptlang.org/"><img alt="typescript" src="https://www.datocms-assets.com/48401/1627663113-learn-typescript.png?fit=max&fm=webp&w=900" width="80"></a>
     <a href="https://www.postgresql.org/"><img alt="Postgres" src="https://avatars.githubusercontent.com/u/177543?s=200&v=4" width="80"></a>
     <a href="https://typeorm.io/"><img alt="typeorm" src="https://github.com/typeorm/typeorm/raw/master/resources/logo_big.png" width="80"></a>
   </p>

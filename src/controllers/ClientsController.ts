@@ -4,6 +4,7 @@ import CreateClientsService from "../services/CreateClientsService";
 import DeleteClientsService from "../services/DeleteClientsService";
 import FindByIdClientsService from "../services/FindByIdClientsService";
 import FindClientsService from "../services/FindClientsService";
+import UpdateClientsActiveService from "../services/UpdateClientsActiveService";
 import UpdateClientsService from "../services/UpdateClientsService";
 
 export default class ClientsController {
@@ -37,9 +38,16 @@ export default class ClientsController {
 
   public async update(request: Request, response: Response): Promise<Response | void> {
     const { id } = request.params;
-    const { name, phone, email, cpf, city_id } = request.body;
+    const { name, phone, email, cpf, city_id, active } = request.body;
     const updateClientsService = new UpdateClientsService();
-    await updateClientsService.execute({ name, phone, email, cpf, city_id }, id);
+    await updateClientsService.execute({ name, phone, email, cpf, city_id, active }, id);
+    return response.status(204).json({ message: "successfully updated" });
+  }
+
+  public async updateActive(request: Request, response: Response): Promise<Response | void> {
+    const { id } = request.params;
+    const updateClientsActiveService = new UpdateClientsActiveService();
+    await updateClientsActiveService.execute(id);
     return response.status(204).json({ message: "successfully updated" });
   };
 
