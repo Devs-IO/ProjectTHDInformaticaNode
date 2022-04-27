@@ -1,11 +1,11 @@
-import ICreatePaymentOptionsDTO from "../dtos/ICreatePaymentOptionsDTO";
 import { getRepository, Repository } from "typeorm";
-import IPaymentOptions from "./interface/IPaymentOptionsRepository";
+import ICreatePaymentOptionsDTO from "../dtos/ICreatePaymentOptionsDTO";
 import PaymentOptions from "../models/PaymentOptions";
+import IPaymentOptions from "./interface/IPaymentOptionsRepository";
 
 class PaymentOptionsRepository implements IPaymentOptions {
 
-  private ormRepository: Repository <PaymentOptions>;
+  private ormRepository: Repository<PaymentOptions>;
 
   constructor() {
     this.ormRepository = getRepository(PaymentOptions);
@@ -20,6 +20,15 @@ class PaymentOptionsRepository implements IPaymentOptions {
   async find(): Promise<PaymentOptions[]> {
     const paymentOptions = this.ormRepository.find();
     return paymentOptions;
+  };
+
+  async findById(id: string): Promise<PaymentOptions> {
+    const payment = await this.ormRepository.findOne({
+      where: [
+        { id },
+      ],
+    });
+    return payment!;
   };
 };
 

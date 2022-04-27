@@ -31,6 +31,15 @@ class SellsRepository implements ISellsRepository {
     return sells;
   };
 
+  async findById(id: string): Promise<Sells> {
+    const sell = await this.ormRepository.findOne({
+      where: [
+        { id },
+      ],
+    });
+    return sell!;
+  }
+
   async deleteById(id: string): Promise<void> {
     await this.ormRepository.delete(id)
   };

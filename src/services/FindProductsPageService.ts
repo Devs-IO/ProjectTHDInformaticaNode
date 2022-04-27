@@ -16,7 +16,7 @@ interface IProductsPage {
 };
 
 class FindProductPageService {
-  public async execute() {
+  public async execute(): Promise<IProductsPage[]> {
 
     const productsRepository = new ProductsRepository();
     const categoriesRepository = new CategoriesRepository();

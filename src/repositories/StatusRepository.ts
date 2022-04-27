@@ -21,6 +21,15 @@ class StatusRepository implements IStatusRepository {
     const status = this.ormRepository.find()
     return status;
   };
+
+  async findById(id: string): Promise<Status> {
+    const status = await this.ormRepository.findOne({
+      where: [
+        { id },
+      ],
+    });
+    return status!;
+  };
 };
 
 export default StatusRepository;

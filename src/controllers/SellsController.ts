@@ -40,7 +40,7 @@ export default class SellsController {
   public async find(_: Request, response: Response): Promise<Response | void> {
     const findSellsService = new FindSellsService();
     const sells = await findSellsService.execute();
-    return response.status(201).json(sells);
+    return response.status(200).json(sells);
   };
 
   public async findByClientId(request: Request, response: Response): Promise<Response | void> {
