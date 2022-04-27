@@ -86,7 +86,7 @@ export default class ProductsController {
     return response.status(204).json();
   };
 
-  public async findByActive (_:Request, response:Response): Promise<Response | void> {
+  public async findByActive(_:Request, response:Response): Promise<Response | void> {
     const findByActiveProductsService = new FindByActiveProductsService();
     const products = findByActiveProductsService.execute();
     return response.status(200).json(products);

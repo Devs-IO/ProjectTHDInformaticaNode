@@ -42,9 +42,6 @@ class Products {
   @Column()
   active: boolean;
 
-  @Column()
-  active: boolean;
-
   @CreateDateColumn()
   created_at: Date;
 
