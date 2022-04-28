@@ -76,6 +76,10 @@
 
 :heavy_check_mark: Botão para Cadastro de Vendas
 
+:heavy_check_mark: Edição e deleção de Produtos
+
+:heavy_check_mark: Edição e deleção de Clientes
+
 
 
 ## Deploy da Aplicação :rocket:
@@ -169,9 +173,6 @@ DATABASE_URL = postgres://postgres:postgres@localhost:5432/thdproject
 
 ## Tarefas em aberto :pencil:
 
-:memo: Edição e deleção de Produtos
-
-:memo: Edição e deleção de Clientes
 
 :memo: Edição e deleção de Vendas
 
