@@ -1,16 +1,16 @@
-import CitiesRepository from "../repositories/CitiesRepository";
-import ClientsRepository from "../repositories/ClientsRepository";
+import CitiesRepository from '../repositories/CitiesRepository';
+import ClientsRepository from '../repositories/ClientsRepository';
 
 interface IClientsPage {
-  name: string,
-  phone: string,
-  email: string,
-  cpf: string,
-  city: string,
-};
+  name: string;
+  phone: string;
+  email: string;
+  cpf: string;
+  city: string;
+  active: boolean;
+}
 
 class FindClientsService {
-
   public async execute(): Promise<IClientsPage[]> {
     const clientsRepository = new ClientsRepository();
     const citiesRepository = new CitiesRepository();
@@ -30,7 +30,7 @@ class FindClientsService {
         city: city.name,
         active: element.active,
       });
-    };
+    }
     return clientsPage;
   }
 }

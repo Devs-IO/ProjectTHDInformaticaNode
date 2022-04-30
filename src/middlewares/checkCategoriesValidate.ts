@@ -1,15 +1,16 @@
-import { NextFunction, Request, Response } from "express";
-import { ObjectShape, OptionalObjectSchema } from "yup/lib/object";
-import AppError from "../errors/AppError";
+import { NextFunction, Request, Response } from 'express';
+import { ObjectShape, OptionalObjectSchema } from 'yup/lib/object';
+import AppError from '../errors/AppError';
 
-const checkCategoriesValidate = (requestSchema: OptionalObjectSchema<ObjectShape>) =>
+const checkCategoriesValidate =
+  (requestSchema: OptionalObjectSchema<ObjectShape>) =>
   async (request: Request, response: Response, next: NextFunction) => {
-    const { name } = request.body
+    const { name } = request.body;
     try {
       await requestSchema.validate({ name });
       return next();
-    } catch (error) {
-      throw new AppError("Category validation error.");
+    } catch (error: any) {
+      throw new AppError(error);
     }
   };
 

@@ -1,19 +1,20 @@
-import { NextFunction, Request, Response } from "express";
-import { ObjectShape, OptionalObjectSchema } from "yup/lib/object";
-import AppError from "../errors/AppError";
+import { NextFunction, Request, Response } from 'express';
+import { ObjectShape, OptionalObjectSchema } from 'yup/lib/object';
+import AppError from '../errors/AppError';
 
-const checkProductValidate = (requestSchema: OptionalObjectSchema<ObjectShape>) =>
-
+const checkProductValidate =
+  (requestSchema: OptionalObjectSchema<ObjectShape>) =>
   async (request: Request, response: Response, next: NextFunction) => {
-
-    const { name,
+    const {
+      name,
       category_id,
       provider_id,
       sell_price,
       buy_price,
       description,
       quantity,
-      code } = request.body;
+      code,
+    } = request.body;
 
     try {
       await requestSchema.validate({
@@ -24,14 +25,13 @@ const checkProductValidate = (requestSchema: OptionalObjectSchema<ObjectShape>) 
         buy_price,
         description,
         quantity,
-        code
+        code,
       });
 
       return next();
+    } catch (error: any) {
+      throw new AppError(error);
     }
-    catch (error) {
-      throw new AppError("Product validation error");
-    }
-  }
+  };
 
-export default checkProductValidate
+export default checkProductValidate;
