@@ -1,4 +1,5 @@
 import { Request, Response } from "express";
+import FindSellsByIdService from "services/FindSellsByIdService";
 import CreateSellsService from "../services/CreateSellsService";
 import DeleteSellsService from "../services/DeleteSellsService";
 import FindSellsByClientIdService from "../services/FindSellsByClientIdService";
@@ -82,4 +83,11 @@ export default class SellsController {
 
     return response.status(204).json({ message: "successfully updated" });
   };
+
+  public async findById(request: Request, response: Response): Promise<Response | void> {
+    const { id } = request.params;
+    const findSellsByIdService = new FindSellsByIdService();
+    const sells = findSellsByIdService.execute(id);
+    return response.status(200).json(sells);
+  }
 };
