@@ -1,4 +1,4 @@
-import SellsRepository from "repositories/SellsRepository";
+import SellsRepository from "../repositories/SellsRepository";
 import Sells from "../models/Sells";
 
 

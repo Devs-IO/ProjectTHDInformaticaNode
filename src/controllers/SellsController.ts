@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import FindSellsByIdService from "services/FindSellsByIdService";
+import FindSellsByIdService from "../services/FindSellsByIdService";
 import CreateSellsService from "../services/CreateSellsService";
 import DeleteSellsService from "../services/DeleteSellsService";
 import FindSellsByClientIdService from "../services/FindSellsByClientIdService";
