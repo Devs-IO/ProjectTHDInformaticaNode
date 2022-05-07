@@ -11,6 +11,7 @@ interface IClientsPage {
     value: string;
     label: string;
   };
+  city_id: string;
 }
 
 class FindByIdClientsService {
@@ -27,6 +28,7 @@ class FindByIdClientsService {
         label: city.name,
         value: city.id,
       },
+      city_id: city.id,
     };
 
     return clientReturn;

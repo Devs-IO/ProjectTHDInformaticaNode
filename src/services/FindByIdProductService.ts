@@ -1,23 +1,30 @@
-import CategoriesRepository from "../repositories/CategoriesRepository";
-import ProductsRepository from "../repositories/ProductsRepository";
-import ProvidersRepository from "../repositories/ProvidersRepository";
+import CategoriesRepository from '../repositories/CategoriesRepository';
+import ProductsRepository from '../repositories/ProductsRepository';
+import ProvidersRepository from '../repositories/ProvidersRepository';
 
 interface IProductsPage {
-  id: string,
-  name: string,
-  categories_name?: string,
-  providers_name?: string,
-  sell_price: string,
-  buy_price: string,
-  description?: string,
-  quantity: string,
-  code?: string,
-  active: boolean
-};
+  id: string;
+  name: string;
+  category: {
+    value: string;
+    label: string;
+  };
+  category_id: string;
+  provider: {
+    value: string;
+    label: string;
+  };
+  provider_id: string;
+  sell_price: string;
+  buy_price: string;
+  description?: string;
+  quantity: string;
+  code?: string;
+  active: boolean;
+}
 
 class FindByIdProductService {
   public async execute(id: string) {
-
     const productsRepository = new ProductsRepository();
     const categoriesRepository = new CategoriesRepository();
     const providersRepository = new ProvidersRepository();
@@ -31,18 +38,26 @@ class FindByIdProductService {
     productsPage = {
       id: product.id,
       name: product.name,
-      categories_name: category.name,
-      providers_name: provider.name,
+      category: {
+        label: category.name,
+        value: category.id,
+      },
+      category_id: category.id,
+      provider: {
+        label: provider.name,
+        value: provider.id,
+      },
+      provider_id: provider.id,
       sell_price: product.sell_price,
       description: product.description,
       buy_price: product.buy_price,
       quantity: product.quantity,
       code: product.code,
-      active: product.active
-    }
+      active: product.active,
+    };
 
     return productsPage;
-  };
-};
+  }
+}
 
 export default FindByIdProductService;
