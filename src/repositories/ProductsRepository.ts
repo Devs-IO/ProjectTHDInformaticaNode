@@ -49,6 +49,16 @@ class ProductsRepository implements IProductsRepository {
     await this.ormRepository.update(id, dataProduct);
   };
 
+  async findByActive(): Promise<Products[]> {
+    const products = await this.ormRepository.find({
+      where: [
+        { active: true }
+      ]
+    });
+
+    return products;
+  };
+
   async updateByIdActive(id: string): Promise<void> {
     await this.ormRepository.update(id, { active: false });
   };
