@@ -1,12 +1,49 @@
-import Products from "../models/Products";
+import CategoriesRepository from "../repositories/CategoriesRepository";
 import ProductsRepository from "../repositories/ProductsRepository";
+import ProvidersRepository from "../repositories/ProvidersRepository";
+
+interface IProductsPage {
+  id: string,
+  name: string,
+  categories_name?: string,
+  providers_name?: string,
+  sell_price: string,
+  buy_price: string,
+  description?: string,
+  quantity: string,
+  code?: string,
+  active: boolean
+};
 
 class FindProductService {
-  public async execute(): Promise<Products[]> {
+  public async execute(): Promise<IProductsPage[]> {
+
     const productsRepository = new ProductsRepository();
-    let products = await productsRepository.find();
-    return products;
-  }
-}
+    const categoriesRepository = new CategoriesRepository();
+    const providersRepository = new ProvidersRepository();
+
+    const products = await productsRepository.find();
+    const productsPage: IProductsPage[] = [];
+
+    for (const element of products) {
+      const category = await categoriesRepository.findById(element.category_id);
+      const provider = await providersRepository.findById(element.provider_id);
+
+      productsPage.push({
+        id: element.id,
+        name: element.name,
+        categories_name: category.name,
+        providers_name: provider.name,
+        sell_price: element.sell_price,
+        description: element.description,
+        buy_price: element.buy_price,
+        quantity: element.quantity,
+        code: element.code,
+        active: element.active
+      })
+    };
+    return productsPage;
+  };
+};
 
 export default FindProductService;

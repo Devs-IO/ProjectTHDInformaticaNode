@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
-import FindByActiveClientService from "../services/FindByActiveClientsService";
 import CreateClientsService from "../services/CreateClientsService";
 import DeleteClientsService from "../services/DeleteClientsService";
+import FindByActiveClientsService from "../services/FindByActiveClientsService";
 import FindByIdClientsService from "../services/FindByIdClientsService";
 import FindClientsService from "../services/FindClientsService";
 import UpdateClientsActiveService from "../services/UpdateClientsActiveService";
@@ -51,9 +51,9 @@ export default class ClientsController {
     return response.status(204).json({ message: "successfully updated" });
   };
 
-  public async findByActive(_:Request, response:Response): Promise <Response | void> {
-    const findByActiveClientService = new FindByActiveClientService();
-    const clients = findByActiveClientService.execute();
+  public async findByActive(_: Request, response: Response): Promise <Response | void> {
+    const findByActiveClientsService = new FindByActiveClientsService();
+    const clients = await findByActiveClientsService.execute();
     return response.status(200).json(clients);
   };
 };

@@ -51,7 +51,7 @@ class ClientsRepository implements IClientsRepository {
   };
 
   async findByActive(): Promise<Clients[]> {
-    const clients = this.ormRepository.find({
+    const clients = await this.ormRepository.find({
       where: [
         { active: true }
       ]

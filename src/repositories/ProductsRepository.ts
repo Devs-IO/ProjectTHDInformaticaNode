@@ -50,7 +50,7 @@ class ProductsRepository implements IProductsRepository {
   };
 
   async findByActive(): Promise<Products[]> {
-    const products = this.ormRepository.find({
+    const products = await this.ormRepository.find({
       where: [
         { active: true }
       ]
