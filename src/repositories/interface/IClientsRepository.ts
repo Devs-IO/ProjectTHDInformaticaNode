@@ -7,5 +7,6 @@ export default interface IClientsRepository {
   find(): Promise<Clients[]>;
   deleteById(id: string): Promise<void>;
   updateById(dataProduct: ICreateClientDTO, id: string): Promise<void>;
+  findByActive(): Promise<Clients[]>;
   updateByIdActive(id: string): Promise<void>;
 }

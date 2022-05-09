@@ -1,8 +1,8 @@
 import { Request, Response } from "express";
 import CreateProductsService from "../services/CreateProductsService";
 import DeleteProductService from "../services/DeleteProductService";
+import FindByActiveProductsService from "../services/FindByActiveProductsService";
 import FindByIdProductService from "../services/FindByIdProductService";
-import FindProductPageService from "../services/FindProductsPageService";
 import FindProductService from "../services/FindProductsService";
 import UpdateProductsActiveService from "../services/UpdateProductsActiveService";
 import UpdateProductService from "../services/UpdateProductService";
@@ -53,11 +53,6 @@ export default class ProductsController {
     return response.status(204).json({ message: "successfully deleted" });
   };
 
-  public async findProductPage(_: Request, response: Response): Promise<Response | void> {
-    const findProductPageService = new FindProductPageService();
-    const products = await findProductPageService.execute();
-    return response.status(200).json(products);
-  };
 
   public async update(request: Request, response: Response): Promise<Response | void> {
     const { id } = request.params;
@@ -83,6 +78,12 @@ export default class ProductsController {
       active
     }, id);
     return response.status(204).json();
+  };
+
+  public async findByActive(_:Request, response:Response): Promise<Response | void> {
+    const findByActiveProductsService = new FindByActiveProductsService();
+    const products = await findByActiveProductsService.execute();
+    return response.status(200).json(products);
   };
 
   public async updateActive(request: Request, response: Response): Promise<Response | void> {
